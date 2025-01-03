@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Information Sheet</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 flex">
+
+    <!-- Sidebar Navigation -->
+    <nav class="w-64 h-screen bg-gray-800 text-white flex flex-col">
+        {% include "nav.html" %}
+    </nav>
+
+    <!-- Main Content Area -->
+    <main class="flex-1 p-8">
+        <div class="max-w-5xl mx-auto bg-white p-10 rounded-lg shadow-xl">
+            <h1 class="text-4xl font-extrabold text-center text-gray-800 mb-8">Student Information Sheet</h1>
+
+            <form action="{{ url_for('information_form', db=db) }}" method="POST" class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Name -->
+                <div>
+                    <label for="name" class="block text-lg font-medium text-gray-700">Name</label>
+                    <input type="text" id="name" name="name" class="mt-2 block w-full p-3 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500" required>
+                </div>
+
+                <!-- Father's Name -->
+                <div>
+                    <label for="father_name" class="block text-lg font-medium text-gray-700">Father's Name</label>
+                    <input type="text" id="father_name" name="father_name" class="mt-2 block w-full p-3 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500" required>
+                </div>
+
+                <!-- Mobile Number -->
+                <div>
+                    <label for="mobile_number" class="block text-lg font-medium text-gray-700">Mobile Number</label>
+                    <input type="text" id="mobile_number" name="mobile_number" class="mt-2 block w-full p-3 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500" required>
+                </div>
+
+                <!-- Employment Status -->
+                <div>
+                    <label for="employment_status" class="block text-lg font-medium text-gray-700">Employment Status</label>
+                    <select id="employment_status" name="employment_status" class="mt-2 block w-full p-3 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500" required>
+                        <option value="Employed">Employed</option>
+                        <option value="Unemployed">Unemployed</option>
+                        <option value="Housewife">Housewife</option>
+                        <option value="Businessman">Businessman</option>
+                        <option value="Student">Student</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+
+                <!-- Qualification -->
+                <div>
+                    <label for="qualification" class="block text-lg font-medium text-gray-700">Qualification</label>
+                    <input type="text" id="qualification" name="qualification" class="mt-2 block w-full p-3 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500" required>
+                </div>
+
+                <!-- Reason for Studying -->
+                <div>
+                    <label for="reason" class="block text-lg font-medium text-gray-700">Reason for Studying Computer Courses</label>
+                    <select id="reason" name="reason" class="mt-2 block w-full p-3 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500" required>
+                        <option value="For a Job">For a Job</option>
+                        <option value="For Additional Qualification">For Additional Qualification</option>
+                        <option value="To Gain Knowledge">To Gain Knowledge</option>
+                        <option value="Sponsored by Company">Sponsored by Company</option>
+                    </select>
+                </div>
+
+                <!-- Address -->
+                <div class="col-span-3">
+                    <label for="address" class="block text-lg font-medium text-gray-700">Address</label>
+                    <textarea id="address" name="address" class="mt-2 block w-full p-3 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500" rows="3" required></textarea>
+                </div>
+
+                <!-- Pin Code -->
+                <div>
+                    <label for="pin_code" class="block text-lg font-medium text-gray-700">Pin Code</label>
+                    <input type="text" id="pin_code" name="pin_code" class="mt-2 block w-full p-3 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500" required>
+                </div>
+
+                <!-- Sex -->
+                <div>
+                    <label class="block text-lg font-medium text-gray-700">Sex</label>
+                    <div class="flex items-center space-x-6 mt-2">
+                        <div>
+                            <input type="radio" id="male" name="sex" value="Male" class="mr-2" required>
+                            <label for="male">Male</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="female" name="sex" value="Female" class="mr-2" required>
+                            <label for="female">Female</label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Course Interested -->
+                <div>
+                    <label for="course_interested" class="block text-lg font-medium text-gray-700">Course Interested</label>
+                    <input type="text" id="course_interested" name="course_interested" class="mt-2 block w-full p-3 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500" required>
+                </div>
+
+                <!-- Joining Plan -->
+                <div>
+                    <label for="joining_plan" class="block text-lg font-medium text-gray-700">Plan to Join</label>
+                    <select id="joining_plan" name="joining_plan" class="mt-2 block w-full p-3 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500" required>
+                        <option value="Immediately">Immediately</option>
+                        <option value="Within a Week">Within a Week</option>
+                        <option value="Within a Month">Within a Month</option>
+                    </select>
+                </div>
+
+                <!-- Source of Information -->
+                <div>
+                    <label for="source_info" class="block text-lg font-medium text-gray-700">How did you hear about CSC?</label>
+                    <div class="flex flex-col mt-2 space-y-2">
+                        <div>
+                            <input type="checkbox" id="newspaper" name="source_info" value="Newspaper" class="mr-2">
+                            <label for="newspaper">Newspaper</label>
+                        </div>
+                        <div>
+                            <input type="checkbox" id="television" name="source_info" value="Television" class="mr-2">
+                            <label for="television">Television</label>
+                        </div>
+                        <div>
+                            <input type="checkbox" id="others" name="source_info" value="Others" class="mr-2">
+                            <label for="others">Others (Pamphlet, Banner, etc.)</label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Submit Button -->
+                <div class="col-span-3">
+                    <button type="submit" class="w-full bg-blue-600 text-white py-3 rounded-md hover:bg-blue-700 focus:ring-4 focus:ring-blue-300">Submit</button>
+                </div>
+            </form>
+        </div>
+    </main>
+
+</body>
+</html>
