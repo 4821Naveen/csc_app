@@ -15,7 +15,7 @@ app.add_url_rule('/photos/<path:filename>', endpoint='photos', view_func=app.sen
 def connect_db(user, password, db):
     try:
         connection = mysql.connector.connect(
-            host="35.174.174.149",
+            host="3.92.237.85",
             user=user,
             password=password,
             database=db
